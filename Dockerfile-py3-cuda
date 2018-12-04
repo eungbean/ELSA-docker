@@ -15,11 +15,11 @@ LABEL maintainer "eungbean@u.sogang.ac.kr"
 ENV OPENCV_VERSION 3.4.2
 
 # Install all dependencies for OpenCV
-RUN RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
+RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
-    
-    $APT_INSTALL -y update && \
-    $APT_INSTALL -y install \
+
+    apt-get -y update && \
+    $APT_INSTALL \
         python3 \
         python3-dev \
         git \
@@ -108,7 +108,7 @@ RUN RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
 #ELSA-SERVER
 # ==================================================================
 
-  $APT_INSTALL -y install \
+  $APT_INSTALL \
     CacheControl==0.12.5 \
     cachetools==2.1.0 \
     certifi==2018.10.15 \
@@ -153,17 +153,16 @@ RUN RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     curl && \
 
 # Mecab
-    bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh) && \
+    curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh && \
 
 # Git clone
-    cd ~/ELSA &&\
-    git clone https://github.com/gyukebox/elsa-server &&\
+    mkdir ~/ELSA \
+    cd ~/ELSA && \
+    git clone https://github.com/gyukebox/elsa-server && \
 
 # ==================================================================
 #ELSA-situation-recognition
 # ==================================================================
-    # Git clone
-    cd ~/ELSA &&\
     git clone https://github.com/gyukebox/ELSA-situation-recognition.git &&\
 # ==================================================================
 
@@ -171,7 +170,7 @@ RUN RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
 #ELSA-Client
 # ==================================================================
 
-    APT_INSTALL -y install npm &&\
+    APT_INSTALL npm &&\
 
     # Git clone
     cd ~/ELSA &&\

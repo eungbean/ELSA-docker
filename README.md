@@ -1,12 +1,22 @@
-# Docker: python-opencv-ffmpeg(-cuda)
+==================================================================
+module list                   ver/branch  source
+==================================================================
+opencv                        3.4.2       git
+Mecab                         latest      git
+ELSA-server                   latest      git
+ELSA-client                   latest      git
+ELSA-situation-recognition    opencv      git
+==================================================================
 
-Repository for clean Dockerfile containing ffmpeg, opencv3 and python2/3, based on Ubuntu 16.04 LTS.
+
+# Docker: ELSA(-cuda)
+
+Repository for clean Dockerfile containing ffmpeg, opencv3 and python2/3, django based on Ubuntu 16.04 LTS.
 
 ## Tags
 
-* `:py3` Python 3.5, OpenCV 3.4.2, ffmpeg  (not av. yet)
 * `:py3-cuda` Python 3.5, OpenCV 3.4.2, ffmpeg with CUDA 8.0 support
-
+* `:py3` Python 3.5, OpenCV 3.4.2, ffmpeg  (not av. yet)
 
 ## Build
 
@@ -20,7 +30,7 @@ docker pull eungbean/elsa
 Other option is building it on your own, note it takes lots of time, be prepared.
 ``` bash
 git clone <git-repository>
-cd docker_python-opencv-ffmpeg
+cd ELSA-docker
 docker image build -t eungbean/elsa -f Dockerfile-py3-cuda .
 ```
 To build other versions, select different Dockerfile.
